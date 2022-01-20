@@ -1,5 +1,5 @@
 # leaflet-challenge
-HW 17 GeoMapping 
+HW 17 GeoMapping - Earthquake Date from ONE DAY
 
 # Leaflet Homework - Visualizing Data with Leaflet
 
