@@ -41,11 +41,11 @@ d3.json(earthquakesURLoneday, function(earthquakeData) {
       case depth > 50:
         return "orange";
       case depth > 30:
-        return "lightorange";
+        return "gold";
       case depth > 10:
         return "yellow";
       default:
-        return "green";
+        return "lime";
     }
   }
 
@@ -77,5 +77,8 @@ d3.json(earthquakesURLoneday, function(earthquakeData) {
    // Sending  earthquakes layer to the createMap function
    earthquakes.addTo(myMap);
 
+     
+   
 });
+
 
