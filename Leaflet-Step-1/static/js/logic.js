@@ -89,7 +89,7 @@ d3.json(earthquakesURLoneday, function(earthquakeData) {
     var div = L.DomUtil.create("div", "info legend"),
     depth = [-10, 10, 30, 50, 70, 90];
     
-    div.innerHTML += "<h3 style='text-align: center'>Depth</h3>"
+    div.innerHTML += "<h3 style='text-align: center'>Legend</h3>"
   for (var i =0; i < depth.length; i++)
   
   {div.innerHTML += 
