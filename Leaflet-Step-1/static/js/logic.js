@@ -23,3 +23,28 @@ var myMap = L.map("mapid", {
   layers: [grayscaleMap, earthquakes]
 });
 
+d3.json(earthquakesURL, function(earthquakeData) {
+
+
+  // Determine the earthquake marker size by their magnitude
+  function markerSize(magnitude) {
+    return magnitude * 4;
+  };
+
+   // Determine the earthquake marker color by depth
+   function chooseColor(depth) {
+    switch(true) {
+      case depth > 90:
+        return "red";
+      case depth > 70:
+        return "orangered";
+      case depth > 50:
+        return "orange";
+      case depth > 30:
+        return "yellow";
+      case depth > 10:
+        return "lightyellow";
+      default:
+        return "green";
+    }
+  }
