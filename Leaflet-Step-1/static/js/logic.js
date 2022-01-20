@@ -17,9 +17,9 @@ var grayscaleMap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/
 // Create the map, giving it the grayscaleMap and earthquakes layers to display on load
 var myMap = L.map("mapid", {
   center: [
-    37.09, -95.71
+    35, -100
   ],
-  zoom: 3,
+  zoom: 4,
   layers: [grayscaleMap, earthquakes]
 });
 
@@ -36,26 +36,29 @@ d3.json(earthquakesURLoneday, function(earthquakeData) {
     switch(true) {
       case depth > 90:
         return "red";
+
       case depth > 70:
         return "orangered";
+
       case depth > 50:
         return "orange";
+
       case depth > 30:
         return "gold";
+
       case depth > 10:
         return "yellow";
+
       default:
         return "lime";
     }
   }
-
   
   // Create a GeoJSON layer 
   // Pop UP describing the place and time each earthquake with circle markers
   L.geoJSON(earthquakeData, {
     pointToLayer: function (feature, latlng) {
       return L.circleMarker(latlng, 
-
 
         // Set style of the markers 
         {
@@ -78,7 +81,27 @@ d3.json(earthquakesURLoneday, function(earthquakeData) {
    earthquakes.addTo(myMap);
 
      
-   
+    // Add legend
+  var legend = L.control({position: "bottomright"});
+  legend.onAdd = function() 
+  
+  {
+    var div = L.DomUtil.create("div", "info legend"),
+    depth = [-10, 10, 30, 50, 70, 90];
+    
+    div.innerHTML += "<h3 style='text-align: center'>Depth</h3>"
+  for (var i =0; i < depth.length; i++)
+  
+  {div.innerHTML += 
+    '<i style="background:' + chooseColor(depth[i] + 1) + '"></i> ' +
+        depth[i] + (depth[i + 1] ? '&ndash;' + depth[i + 1] + '<br>' : '+');
+      }
+
+    return div;
+  };
+
+  legend.addTo(myMap);
+
 });
 
 
